@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello, world!</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content="" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link rel="icon" href="favicon.png" />
+    </head>
+
+    <body>
+        <header>
+            <h1>Hello, world!</h1>
+        </header>
+
+        <nav class="nav" id="nav">
+            <a href="#home">Logo</a>
+            <a href="#menu-item-1">Menu Item 1</a>
+            <a href="#menu-item-2">Menu Item 2</a>
+            <a href="#menu-item-3">Menu Item 3</a>
+
+            <a
+                href="javascript:void(0);"
+                id="menu-toggle"
+                onclick="togglemenu()"
+            >
+                <div class="menu-toggle__bar1"></div>
+                <div class="menu-toggle__bar2"></div>
+                <div class="menu-toggle__bar3"></div>
+            </a>
+        </nav>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+
+        <img src="https://via.placeholder.com/800x600/" alt="" />
+
+        <main>
+            <section></section>
+            <section></section>
+            <section></section>
+        </main>
+
+        <footer></footer>
+
+        <script>
+            function togglemenu() {
+                var x = document.getElementById("nav");
+
+                if (x.className === "nav") {
+                    x.className += " nav--open";
+                } else {
+                    x.className = "nav";
+                }
+
+                var element = document.getElementById("menu-toggle");
+                element.classList.toggle("menu-toggle--open");
+            }
+        </script>
+
+        <script src="app.js"></script>
+    </body>
+</html>
