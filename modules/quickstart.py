@@ -25,9 +25,15 @@ def quickstart(config):
 
     # Check if src folder exists
     if not os.path.exists(src_folder_path):
+        print('src folder not found, creating src folder...')
         os.makedirs(src_folder_path)
 
     # Copy theme template into src directory
-    shutil.copytree(theme_location, src_folder_path, dirs_exist_ok=True)
+    print('copying theme into src for editing...')
+    try:
+        shutil.copytree(theme_location, src_folder_path, dirs_exist_ok=True)
+    except FileNotFoundError as file_not_found:
+        print(f'Error: ', file_not_found)
+        print('quick start failed.')
 
-    print('Quick start complete.')
+    print('quick start complete.')
