@@ -1,3 +1,11 @@
-{
-  "theme": "example-theme"
-}
+[
+    {
+        "theme": "example-theme"
+    },
+    {
+        "author": "zagdiablo",
+        "site_title": "zagdiablo",
+        "email": "zagdiablo@zagdiablo.com",
+        "about": "\nCongratulations! You successfuly forged a full-metal static site.\n\nplease edit yor \"About\" in config.json file (or manually edit the html file in src folder for more control).\nyou can change theme, or change any site settings on the config.json file.\n"
+    }
+]

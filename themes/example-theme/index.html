@@ -3,23 +3,24 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Hello, world!</title>
+        <title>{{ title }}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="description" content="" />
+        <meta name="description" content="{{ description }}" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="icon" href="favicon.png" />
     </head>
 
     <body>
         <header>
-            <h1>Hello, world!</h1>
+            <h1>{{title}}</h1>
         </header>
 
         <nav class="nav" id="nav">
-            <a href="#home">Logo</a>
-            <a href="#menu-item-1">Menu Item 1</a>
-            <a href="#menu-item-2">Menu Item 2</a>
-            <a href="#menu-item-3">Menu Item 3</a>
+            <a href="about.html">About</a>
+            <a href="achievements.html">Achievements</a>
+            <a href="projects.html">Projects</a>
+            <a href="posts.html">Archive</a>
+            <a href="contact.html">Contact</a>
 
             <a
                 href="javascript:void(0);"
@@ -32,9 +33,12 @@
             </a>
         </nav>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do.</p>
+        <p>{{ about }}</p>
 
-        <img src="https://via.placeholder.com/800x600/" alt="" />
+        <img
+            src="https://via.placeholder.com/600x400/"
+            alt="placeholder image"
+        />
 
         <main>
             <section></section>
@@ -44,21 +48,6 @@
 
         <footer></footer>
 
-        <script>
-            function togglemenu() {
-                var x = document.getElementById("nav");
-
-                if (x.className === "nav") {
-                    x.className += " nav--open";
-                } else {
-                    x.className = "nav";
-                }
-
-                var element = document.getElementById("menu-toggle");
-                element.classList.toggle("menu-toggle--open");
-            }
-        </script>
-
-        <script src="app.js"></script>
+        <script src="js/app.js"></script>
     </body>
 </html>
