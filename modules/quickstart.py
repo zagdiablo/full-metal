@@ -4,14 +4,14 @@ import json
 from definitions import ROOT_DIR
 
 themes_folder_path = os.path.join(ROOT_DIR+'/themes')
-src_folder_path = os.path.join(ROOT_DIR+'/src')
+build_folder_path = os.path.join(ROOT_DIR+'/build')
 
 author = ''
 site_title = ''
 email = ''
 about = """
 Congratulations! You successfuly forged a full-metal static site.\n
-please edit yor "About" in config.json file (or manually edit the html file in src folder for more control).
+please edit yor "About" in config.json file (or manually edit the html file in build folder for more control).
 you can change theme, or change any site settings on the config.json file.
 """
 
@@ -24,12 +24,13 @@ def quickstart(config, env):
     email = input(f'[+] Input your email if you want [{author}@{site_title}.com]: ')
 
     # Write basic info into config.json
-    config_data = [config, {
+    config_data = {
+        "theme": theme,
         "author" : author,
         "site_title" : site_title,
         "email" : email,
         "about" : about,
-    }]
+    }
     with open('./config.json', 'w') as config_file:
         json.dump(config_data, config_file, indent=4)
 
@@ -38,7 +39,7 @@ def quickstart(config, env):
     dirs = [x[0] for x in os.walk(themes_folder_path)]
     for dir in dirs:
         if theme in dir:
-            print(f'theme {theme} found! copying theme into src folder...')
+            print(f'theme {theme} found! copying theme into build folder...')
             theme_location = dir
             break
         else:
@@ -46,18 +47,18 @@ def quickstart(config, env):
         print(f'theme {theme} not found in the themes folder, make sure it\'s installed correctly.')
         quit()
 
-    # Check if src folder exists
-    if not os.path.exists(src_folder_path):
-        print('src folder not found, creating src folder...')
-        os.makedirs(src_folder_path)
+    # Check if build folder exists
+    if not os.path.exists(build_folder_path):
+        print('build folder not found, creating build folder...')
+        os.makedirs(build_folder_path)
 
-    # Copy theme template into src directory
-    print('copying theme into src for editing...')
+    # Copy theme template into build directory
+    print('copying theme into build for editing...')
     try:
-        shutil.copytree(theme_location, src_folder_path, dirs_exist_ok=True)
+        shutil.copytree(theme_location, build_folder_path, dirs_exist_ok=True)
     except FileNotFoundError as file_not_found:
         print(f'Error: ', file_not_found)
         print('quick start failed.')
         quit()
 
-    print('quick start complete.')
+    print('quick start complete, run "fullmetal build" to build your site.')
